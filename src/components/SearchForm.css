@@ -1,0 +1,39 @@
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+
+  .search-input {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+  }
+
+  input:focus {
+    border-color: #4f9df9;
+    outline: none; /* optional: remove blue glow */
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #6397d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .showing-user {
+    color: #7c7c7c;
+  }
+}
