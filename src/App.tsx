@@ -1,5 +1,5 @@
 import './App.css'
-import SearchForm from './components/SearchForm'
+import SearchForm from './components/SearchForm/SearchForm'
 import UserList from './components/User/UserList'
 
 function App() {

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { fetchUsers } from '../features/github/githubSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUsers } from '../../features/github/githubSlice'
 import './SearchForm.css'
+import type { RootState } from '../../store'
 
 const SearchForm: React.FC = () => {
+  const { users } = useSelector((state: RootState) => state.github)
   const dispatch = useDispatch()
+
   const [query, setQuery] = useState('')
   const [lastSearchedQuery, setLastSearchedQuery] = useState('')
 
@@ -30,7 +33,10 @@ const SearchForm: React.FC = () => {
       </div>
 
       {lastSearchedQuery && (
-        <p className="showing-user">Showing users for "{lastSearchedQuery}"</p>
+        <p className="showing-user">
+          {users.length !== 0 ? `Showing users for ` : `No users found for `}"
+          {lastSearchedQuery}"
+        </p>
       )}
     </form>
   )

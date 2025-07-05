@@ -1,5 +1,5 @@
 import axiosClient from '../../api/axiosClient'
-import type { GitHubUser } from './githubSlice'
+import { type GitHubRepo, type GitHubUser } from './githubSlice'
 
 interface GitHubUserSearchResponse {
   items: GitHubUser[]
@@ -21,5 +21,20 @@ export async function fetchGitHubUsers(query: string): Promise<GitHubUser[]> {
     login: user.login,
     avatar_url: user.avatar_url,
     html_url: user.html_url,
+  }))
+}
+
+export async function fetchGitHubRepos(username: string) {
+  const response = await axiosClient.get<GitHubRepo[]>(
+    `users/${username}/repos`
+  )
+
+  return response.data.map((repo) => ({
+    id: repo.id,
+    name: repo.name,
+    description: repo.description,
+    stargazers_count: repo.stargazers_count,
+    html_url: repo.html_url,
+    updated_at: repo.updated_at,
   }))
 }

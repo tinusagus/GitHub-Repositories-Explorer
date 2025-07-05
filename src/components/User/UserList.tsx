@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { FaChevronDown, FaChevronUp, FaSpinner } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import type { RootState } from '../../store'
+import RepoList from '../Repo/RepoList'
+import Loading from '../Loading/Loading'
 import './UserList.css'
-import RepoList from '../RepoList'
 
 const UserList: React.FC = () => {
   const { users, loading, error } = useSelector(
@@ -12,14 +13,9 @@ const UserList: React.FC = () => {
 
   const [expandedUser, setExpandedUser] = useState<string | null>(null)
 
-  if (loading)
-    return (
-      <div className="loading">
-        <FaSpinner className="spin" /> Loading Users...
-      </div>
-    )
-  if (error) return <p style={{ color: 'red' }}>{error}</p>
-  if (users.length === 0) return <p>No users found.</p>
+  if (loading) return <Loading title="Loading Users..." />
+
+  if (error) return <p className="error-message-user">{error}</p>
 
   return (
     <ul className="user-list">
@@ -40,11 +36,7 @@ const UserList: React.FC = () => {
             <span className="user-header">{user.login}</span>
             {expandedUser === user.login ? <FaChevronUp /> : <FaChevronDown />}
           </div>
-          {expandedUser === user.login && (
-            <div className="repo-container">
-              <RepoList username={user.login} />
-            </div>
-          )}
+          {expandedUser === user.login && <RepoList username={user.login} />}
         </li>
       ))}
     </ul>
