@@ -8,7 +8,7 @@ import './UserList.css'
 
 const UserList: React.FC = () => {
   const { users, loading, error } = useSelector(
-    (state: RootState) => state.github
+    (state: RootState) => state.userReducer
   )
 
   const [expandedUser, setExpandedUser] = useState<string | null>(null)

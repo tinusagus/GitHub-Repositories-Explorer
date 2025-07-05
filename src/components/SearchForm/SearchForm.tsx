@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsers } from '../../features/github/githubSlice'
-import './SearchForm.css'
 import type { RootState } from '../../store'
+import { fetchUsers } from '../../features/github/githubUserSlice'
+import './SearchForm.css'
 
 const SearchForm: React.FC = () => {
-  const { users } = useSelector((state: RootState) => state.github)
+  const { users } = useSelector((state: RootState) => state.userReducer)
   const dispatch = useDispatch()
 
   const [query, setQuery] = useState('')

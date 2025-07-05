@@ -1,16 +1,18 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, select, takeLatest } from 'redux-saga/effects'
 import {
   fetchRepos,
   fetchReposFailure,
   fetchReposSuccess,
+  type GitHubRepo,
+} from './githubReposSlice'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { fetchGitHubRepos, fetchGitHubUsers } from './githubApi'
+import {
   fetchUsers,
   fetchUsersFailure,
   fetchUsersSuccess,
-  type GitHubRepo,
   type GitHubUser,
-} from './githubSlice'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { fetchGitHubRepos, fetchGitHubUsers } from './githubApi'
+} from './githubUserSlice'
 
 function* handleFetchUsers(action: PayloadAction<string>) {
   try {

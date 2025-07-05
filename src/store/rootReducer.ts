@@ -1,8 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import githubReducer from '../features/github/githubSlice'
+import userReducer from '../features/github/githubUserSlice'
+import reposReducer from '../features/github/githubReposSlice'
 
 const rootReducer = combineReducers({
-  github: githubReducer,
+  userReducer: userReducer,
+  reposReducer: reposReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
