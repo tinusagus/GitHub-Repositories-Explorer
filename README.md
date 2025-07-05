@@ -20,12 +20,6 @@ A React application to search and browse public GitHub repositories by username.
 
 - 📱 Mobile responsive design
 
----
-
-## 📁 Folder Structure
-
----
-
 ## ⚙️ Technologies
 
 - [React](https://reactjs.org/)
